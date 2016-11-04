@@ -28,7 +28,7 @@
         $("#load").click(function () {
             VK.Auth.login(function (response) {
                 if (response.session) {
-                        $("#name").html = response;
+                        $("#name").html(response);
                     if (response.settings) {
                         /* Выбранные настройки доступа пользователя, если они были запрошены */
                     }
