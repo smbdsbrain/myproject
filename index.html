@@ -8,29 +8,11 @@
 <meta name="keywords" content="">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <link href="style.css" rel="stylesheet">
-
+<script src="https://vk.com/js/api/openapi.js?136" type="text/javascript"></script>
 <script type="text/javascript">
-
-	window.onload = function() {
-		$("#load").click(clicked);
-	}
-
-	function clicked()
-	{
-        $.ajax({
-						type: 'get',
-						url: '/myproject/another_page',
-						data: {
-						},
-						success: set_page,
-						dataType: 'html'
-					});
-	}
-
-	function set_page(result) {
-		$('#panel').html(result);
-	}
-        
+  VK.init({
+      apiId: 5709426
+  });
     </script>
 </head>
 <body>
@@ -38,6 +20,10 @@
 
     <button id="load"> Click me! </button>
     <div id="panel"></div>
+
+    <p id="name"></p>
+    <p id="lname"></p>
+
 
 </body>
 </html>
