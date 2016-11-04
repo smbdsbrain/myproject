@@ -29,8 +29,9 @@
             VK.Auth.login(function (response) {
                 if (response.session) {
                     $("#lname").text(response);
-                    alert(response);
-                    console.log(response);
+                    $("#user_id").html(response.session.user.id);
+                    $("#fname").html(response.session.user.first_name);
+                    $("#lname").html(response.session.user.last_name);
                     if (response.settings) {
                         /* Выбранные настройки доступа пользователя, если они были запрошены */
                     }
