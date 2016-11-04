@@ -10,20 +10,34 @@
 <link href="style.css" rel="stylesheet">
 <script src="https://vk.com/js/api/openapi.js?136" type="text/javascript"></script>
 <script type="text/javascript">
-  VK.init({
-      apiId: 5709426
-  });
-    </script>
+    VK.init({
+        apiId: 5709426
+    });
+</script>
 </head>
 <body>
     
-
-    <button id="load"> Click me! </button>
+    <input id=""/>
+    <button id="load">Узнать</button>
     <div id="panel"></div>
 
     <p id="name"></p>
     <p id="lname"></p>
-
+    
+    <script type="text/javascript">
+        $("#load").click(function () {
+            VK.Auth.login(function (response) {
+                if (response.session) {
+                        $("#name").html = response;
+                    if (response.settings) {
+                        /* Выбранные настройки доступа пользователя, если они были запрошены */
+                    }
+                } else {
+                    $("#name").html = "ой";
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>
