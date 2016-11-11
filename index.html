@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
@@ -8,69 +8,33 @@
 <meta name="keywords" content="">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <link href="style.css" rel="stylesheet">
-<script src="https://vk.com/js/api/openapi.js?136" type="text/javascript"></script>
-<script type="text/javascript">
-    VK.init({
-        apiId: 5709426
-    });
 
-    VK.Auth.login(function (response) {
-        if (response.session) {
-            vk_user_id = response.session.user.id;
-            $("#user_id").html(response.session.user.id);
-            $("#fname").html(response.session.user.first_name);
-            $("#lname").html(response.session.user.last_name);
-            if (response.settings) {
-            }
-        } else {
-            $("#lname").html = "ой";
-        }
-    });
-</script>
+<script type="text/javascript">
+	window.onload = function() {
+		$("#load").click(clicked);
+	}
+	function clicked()
+	{
+        $.ajax({
+						type: 'get',
+						url: '/myproject/another_page',
+						data: {
+						},
+						success: set_page,
+						dataType: 'html'
+					});
+	}
+	function set_page(result) {
+		$('#panel').html(result);
+	}
+        
+    </script>
 </head>
 <body>
     
-    <input id=""/>
-    <button id="load">Узнать</button>
-    <button id="get_photo">Получить аватар!</button>
+
+    <button id="load"> Click me! </button>
     <div id="panel"></div>
-
-    <p id="user_id"></p>
-    <p id="fname"></p>
-    <p id="lname"></p>
-
-    <img id="vk_avatar" />
-
-
-    <script type="text/javascript">
-        
-        var vk_user_id = 1;
-
-        $("#load").click(function () {
-            VK.Auth.login(function (response) {
-                if (response.session) {
-                    vk_user_id = response.session.user.id;  
-                    $("#user_id").html(response.session.user.id);
-                    $("#fname").html(response.session.user.first_name);
-                    $("#lname").html(response.session.user.last_name);
-                    if (response.settings) {
-                        /* Выбранные настройки доступа пользователя, если они были запрошены */
-                    }
-                } else {
-                    $("#lname").html = "ой";
-                }
-            });
-        });
-
-        $("#get_photo").click(function () {
-            VK.api("users.get", { user_ids: [vk_user_id], fields: "photo_200" }, function (data) {
-                console.log(data);
-                $("#vk_avatar").attr("src", data.response[0].photo_200);
-            });
-        });
-
-
-    </script>
 
 </body>
 </html>
